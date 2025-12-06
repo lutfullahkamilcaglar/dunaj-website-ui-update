@@ -1235,57 +1235,106 @@
         <!-- How to be part Section -->
         <section class="steps-section">
             <div class="container">
-                <h2 class="section-title" style="margin-bottom: 3rem; text-align: center;">How to be part of Dunaj ?
+                <h2 class="section-title" style="margin-bottom: 3rem; text-align: left; color: white;">How to be part of
+                    Dunaj ?
                 </h2>
 
-                <div class="cta-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-                    <!-- Card 1 -->
-                    <div class="cta-card"
-                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-                        <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            style="width: 48px; height: 48px; margin: 0 auto 1.5rem; display: block;">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                            </path>
-                        </svg>
-                        <h4 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1rem;">Call for
-                            donation</h4>
-                        <p style="color: #9CA3AF; margin-bottom: 1.5rem;">Support our mission by making a donation.
-                            Every contribution helps us create a bigger impact.</p>
-                        <a href="#" class="btn btn-primary">Donate</a>
+                <div class="how-to-be-part-grid">
+                    <!-- Image on the left -->
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+                            alt="Hands coming together" class="how-to-be-part-image">
                     </div>
-                    <!-- Card 2 -->
-                    <div class="cta-card"
-                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-                        <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            style="width: 48px; height: 48px; margin: 0 auto 1.5rem; display: block;">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        <h4 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1rem;">Attend Our
-                            Events</h4>
-                        <p style="color: #9CA3AF; margin-bottom: 1.5rem;">Participate in workshops, dialogues, and
-                            cultural exchanges. Your presence makes a difference!</p>
-                        <a href="#" class="btn btn-outline"
-                            style="border-color: var(--color-accent-yellow); color: var(--color-accent-yellow);">Events</a>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="cta-card"
-                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-                        <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            style="width: 48px; height: 48px; margin: 0 auto 1.5rem; display: block;">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                        <h4 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1rem;">Become A
-                            Volunteer</h4>
-                        <p style="color: #9CA3AF; margin-bottom: 1.5rem;">Join our community and be part of something
-                            meaningful.</p>
-                        <a href="#" class="btn btn-outline" style="border-color: white; color: white;">Join Us</a>
+
+                    <!-- Action cards grid on the right -->
+                    <div class="action-cards-grid">
+                        <!-- Card 1: Call for donation -->
+                        <div class="action-card">
+                            <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3z"></path>
+                                <path
+                                    d="M7 11V7a5 5 0 0 1 10 0v4m-4.265 11.368A12.03 12.03 0 0 1 12 12a12.03 12.03 0 0 1-.735 10.368z">
+                                </path>
+                                <path d="M20 11v8a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                            <h3 class="action-title">Call for donation</h3>
+                            <p class="action-description">Support our mission by making a donation. Every contribution
+                                helps us create a bigger impact.</p>
+                            <a href="#" class="action-link">
+                                Donate
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Card 2: Attend Our Events -->
+                        <div class="action-card">
+                            <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <h3 class="action-title">Attend Our Events</h3>
+                            <p class="action-description">Participate in workshops, dialogues, and cultural exchanges.
+                                Your presence makes a difference!</p>
+                            <a href="#" class="action-link">
+                                Events
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Card 3: Follow Us -->
+                        <div class="action-card">
+                            <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.5 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5.5">
+                                </path>
+                                <path d="M16 17l4 4m0-4l-4 4"></path>
+                                <path d="M8 7h8"></path>
+                                <path d="M8 11h4"></path>
+                            </svg>
+                            <h3 class="action-title">Follow Us</h3>
+                            <p class="action-description">Stay connected and help us spread the word. Follow us on our
+                                social media channels for updates and inspiration.</p>
+                            <a href="#" class="action-link">
+                                Follow Us
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Card 4: Become A Volunteer -->
+                        <div class="action-card">
+                            <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <h3 class="action-title">Become A Volunteer</h3>
+                            <p class="action-description">Join our community and be part of something meaningful.</p>
+                            <a href="#" class="action-link">
+                                Join Us
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
