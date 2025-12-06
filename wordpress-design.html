@@ -567,17 +567,83 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .hero-arrow {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(4px);
-            border-radius: 50%;
+        .hero-arrow:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Hero Animation Styles */
+        .visuals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            height: 600px;
+            overflow: hidden;
+            /* Hide scrollbars */
+            position: relative;
+        }
+
+        .visual-col {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            float: right;
-            transition: background 0.2s, transform 0.2s;
+            flex-direction: column;
+            gap: 1rem;
+            /* Animation applied here */
+        }
+
+        .visual-track {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Column 1 Scroll Up */
+        .visual-col:nth-child(1) .visual-track {
+            animation: scrollUp 40s linear infinite;
+        }
+
+        /* Column 2 Scroll Down */
+        .visual-col:nth-child(2) .visual-track {
+            animation: scrollDown 50s linear infinite;
+        }
+
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(-50%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .visual-item {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            /* Prevent shrinking */
+            width: 100%;
+        }
+
+        .visual-item img {
+            width: 100%;
+            height: 100%;
+            /* Or auto/fixed height */
+            min-height: 250px;
+            /* Ensure height */
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
         }
 
         .hero-arrow:hover {
@@ -1285,27 +1351,71 @@
 
                 <div class="main-hero-right">
                     <div class="visuals-grid">
+
+                        <!-- Column 1 (Scrolls Up) -->
                         <div class="visual-col">
-                            <div class="visual-item v-short">
-                                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
-                                    alt="Diverse Group">
-                            </div>
-                            <div class="visual-item v-tall">
-                                <!-- Replaced broken URL with a reliable one -->
-                                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
-                                    alt="Collaboration">
+                            <div class="visual-track">
+                                <!-- Set 1 -->
+                                <div class="visual-item v-short">
+                                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
+                                        alt="Diverse Group">
+                                </div>
+                                <div class="visual-item v-tall">
+                                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
+                                        alt="Collaboration">
+                                </div>
+                                <div class="visual-item v-medium">
+                                    <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80"
+                                        alt="Smiling People">
+                                </div>
+                                <!-- Set 2 (Duplicate for Loop) -->
+                                <div class="visual-item v-short">
+                                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
+                                        alt="Diverse Group">
+                                </div>
+                                <div class="visual-item v-tall">
+                                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
+                                        alt="Collaboration">
+                                </div>
+                                <div class="visual-item v-medium">
+                                    <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80"
+                                        alt="Smiling People">
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Column 2 (Scrolls Down) -->
                         <div class="visual-col">
-                            <div class="visual-item v-tall">
-                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                                    alt="Meeting">
-                            </div>
-                            <div class="visual-item v-short">
-                                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
-                                    alt="Handshake">
+                            <div class="visual-track">
+                                <!-- Set 1 -->
+                                <div class="visual-item v-tall">
+                                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                                        alt="Meeting">
+                                </div>
+                                <div class="visual-item v-short">
+                                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+                                        alt="Handshake">
+                                </div>
+                                <div class="visual-item v-medium">
+                                    <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=800&q=80"
+                                        alt="Group Discussion">
+                                </div>
+                                <!-- Set 2 (Duplicate for Loop) -->
+                                <div class="visual-item v-tall">
+                                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                                        alt="Meeting">
+                                </div>
+                                <div class="visual-item v-short">
+                                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+                                        alt="Handshake">
+                                </div>
+                                <div class="visual-item v-medium">
+                                    <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=800&q=80"
+                                        alt="Group Discussion">
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
