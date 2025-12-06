@@ -12,1446 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <style>
-        /* 
-         * DIALOG INSTYTUT - WORDPRESS DESIGN
-         * Single File Implementation
-         */
-
-        :root {
-            /* Colors */
-            --color-primary-dark: #111827;
-            /* Dark background/text */
-            --color-primary-light: #FFFFFF;
-            --color-accent-yellow: #FFDB1E;
-            /* Bright Yellow from design */
-            --color-gray-50: #F9FAFB;
-            --color-gray-100: #F3F4F6;
-            --color-gray-200: #E5E7EB;
-            --color-gray-500: #6B7280;
-            --color-gray-800: #1F2937;
-
-            /* Typography */
-            --font-main: 'DM Sans', sans-serif;
-            --font-display: 'Outfit', sans-serif;
-
-            /* Spacing */
-            --container-width: 1200px;
-            --section-padding: 5rem;
-
-            /* Effects */
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --radius-md: 0.5rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-        }
-
-        /* RESET & BASE */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            color: var(--color-primary-dark);
-            background-color: var(--color-primary-light);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* UTILITIES */
-        .container {
-            width: 100%;
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .section {
-            padding: var(--section-padding) 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .hidden-mobile {
-            display: block;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.75rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: var(--font-display);
-        }
-
-        .btn-primary {
-            background-color: var(--color-accent-yellow);
-            color: var(--color-primary-dark);
-            border: 2px solid var(--color-accent-yellow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--color-gray-200);
-            color: var(--color-primary-dark);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--color-primary-dark);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background-color: var(--color-accent-yellow);
-            color: var(--color-primary-dark);
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        /* HEADER */
-        .top-bar {
-            background-color: #fff;
-            color: var(--color-primary-dark);
-            font-size: 0.8125rem;
-            padding: 0;
-            font-weight: 500;
-            border-bottom: 1px solid var(--color-gray-100);
-        }
-
-        .top-bar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            min-height: 44px;
-        }
-
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-primary-dark);
-            text-decoration: none;
-        }
-
-        .contact-item svg {
-            color: var(--color-primary-dark);
-            opacity: 0.8;
-        }
-
-        .top-bar-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .social-icons {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-right: 1.5rem;
-            border-right: 1px solid var(--color-gray-200);
-            margin-right: 0;
-            height: 100%;
-        }
-
-        .social-icons a {
-            color: var(--color-primary-dark);
-            opacity: 0.8;
-            transition: opacity 0.2s;
-            display: flex;
-        }
-
-        .social-icons a:hover {
-            opacity: 1;
-        }
-
-        .btn-donate {
-            background-color: #D6DE21;
-            /* Matches the color in the image more closely */
-            color: var(--color-primary-dark);
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            height: 44px;
-            /* Match height of top bar */
-            text-decoration: none;
-            transition: background 0.2s;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-
-        .btn-donate:hover {
-            background-color: #cdd41f;
-        }
-
-        .link-join {
-            padding: 0 1.5rem;
-            color: var(--color-primary-dark);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-        .link-join:hover {
-            text-decoration: underline;
-        }
-
-        .header {
-            padding: 1.25rem 0;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--font-display);
-            font-weight: 800;
-            font-size: 1.75rem;
-            color: var(--color-primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links li {
-            position: relative;
-        }
-
-        .nav-link {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--color-primary-dark);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            position: relative;
-            padding: 0.5rem 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .nav-link:hover {
-            color: #000;
-        }
-
-        /* Dropdown arrow - small and elegant */
-        .dropdown-arrow {
-            width: 12px;
-            height: 12px;
-            stroke-width: 2.5;
-            transition: transform 0.3s ease, color 0.2s ease;
-            color: var(--color-accent-yellow);
-        }
-
-        .nav-links li:hover .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Premium dropdown menu */
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 1rem);
-            left: 50%;
-            transform: translateX(-50%) translateY(-10px);
-            background: white;
-            border: 1px solid #E5E7EB;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
-            min-width: 240px;
-            padding: 0.75rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 100;
-        }
-
-        .nav-links li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: #374151;
-            font-size: 0.925rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .dropdown-menu a:hover {
-            background: #F9FAFB;
-            color: var(--color-primary-dark);
-            border-left-color: var(--color-accent-yellow);
-        }
-
-        /* Underline effect for regular nav links */
-        .nav-links li:not(:has(.dropdown-menu)) .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-accent-yellow);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links li:not(:has(.dropdown-menu)) .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* NEW MAIN HERO PRE-SECTION */
-        .main-hero {
-            padding: 5rem 0;
-            background-color: #fff;
-            overflow: hidden;
-        }
-
-        .main-hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .main-hero-left {
-            max-width: 600px;
-        }
-
-        .main-hero-title {
-            font-family: var(--font-display);
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.05;
-            color: var(--color-primary-dark);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-        }
-
-        .main-hero-text {
-            font-size: 1.125rem;
-            color: var(--color-gray-500);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            max-width: 90%;
-        }
-
-        .main-hero-actions {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .btn-primary-dark {
-            background-color: var(--color-primary-dark);
-            color: white;
-            padding: 0.875rem 2rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .btn-primary-dark:hover {
-            transform: translateY(-2px);
-            background-color: #000;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--color-primary-dark);
-            border: 1px solid var(--color-gray-200);
-            padding: 0.875rem 2rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--color-primary-dark);
-            background-color: rgba(0, 0, 0, 0.02);
-        }
-
-        .trust-indicator {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .avatars {
-            display: flex;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            margin-left: -12px;
-            object-fit: cover;
-        }
-
-        .avatar:first-child {
-            margin-left: 0;
-        }
-
-        .trust-text {
-            font-size: 0.875rem;
-            color: var(--color-gray-500);
-        }
-
-        .trust-text strong {
-            color: var(--color-primary-dark);
-            font-weight: 700;
-        }
-
-        /* Masonry visual grid */
-        .visuals-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            height: 600px;
-        }
-
-        .visual-col {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .visual-col:nth-child(2) {
-            margin-top: 3rem;
-            /* Offset for masonry effect */
-        }
-
-        .visual-item {
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .visual-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .visual-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .v-tall {
-            flex: 1.5;
-        }
-
-        .v-short {
-            flex: 1;
-        }
-
-        /* HERO SECTION (Existing - Adjusted) */
-        .hero {
-            padding-top: 4rem;
-            padding-bottom: 5rem;
-        }
-
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            color: var(--color-primary-dark);
-            letter-spacing: -0.02em;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 1.5rem;
-            min-height: 550px;
-            /* Increased height for better proportions */
-            align-items: stretch;
-        }
-
-        .hero-card {
-            position: relative;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            padding: 2.5rem;
-            color: white;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-        }
-
-        .hero-card:hover {
-            transform: scale(1.01);
-            /* We'll use calc or just transform */
-        }
-
-        .hero-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transition: transform 0.5s ease;
-        }
-
-        .hero-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.1) 100%);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            width: 100%;
-        }
-
-        .hero-card-content {
-            position: relative;
-            z-index: 3;
-            width: 100%;
-        }
-
-        .hero-card-title {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-card-text {
-            font-size: 1rem;
-            opacity: 0.95;
-            margin-bottom: 1rem;
-            max-width: 90%;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-action-row {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-top: 1rem;
-            gap: 0.75rem;
-        }
-
-        .hero-action-label {
-            color: white;
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-arrow {
-            width: 32px;
-            height: 32px;
-            background: rgba(30, 30, 30, 0.8);
-            /* Dark circle */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s, transform 0.2s;
-            color: white;
-            /* White arrow */
-        }
-
-        .hero-arrow:hover {
-            background: rgba(0, 0, 0, 1);
-            transform: scale(1.05);
-        }
-
-        .hero-arrow svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Hero Animation Styles */
-        .visuals-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            height: 600px;
-            overflow: hidden;
-            /* Hide scrollbars */
-            position: relative;
-        }
-
-        .visual-col {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            /* Animation applied here */
-        }
-
-        .visual-track {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        /* Column 1 Scroll Up */
-        .visual-col:nth-child(1) .visual-track {
-            animation: scrollUp 40s linear infinite;
-        }
-
-        /* Column 2 Scroll Down */
-        .visual-col:nth-child(2) .visual-track {
-            animation: scrollDown 50s linear infinite;
-        }
-
-        @keyframes scrollUp {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-50%);
-            }
-        }
-
-        @keyframes scrollDown {
-            0% {
-                transform: translateY(-50%);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        .visual-item {
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            position: relative;
-            flex-shrink: 0;
-            /* Prevent shrinking */
-            width: 100%;
-        }
-
-        .visual-item img {
-            width: 100%;
-            height: 100%;
-            /* Or auto/fixed height */
-            min-height: 250px;
-            /* Ensure height */
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .hero-arrow:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
-        }
-
-        .hero-grid-right {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            height: 100%;
-        }
-
-        .hero-grid-right .hero-card {
-            flex: 1;
-            height: auto;
-        }
-
-        @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-
-            .hero-card {
-                min-height: 300px;
-            }
-
-            .nav-links {
-                display: none;
-                /* Mobile menu would go here */
-            }
-        }
-
-        /* PARTNERS STRIP */
-        .partners {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--color-gray-100);
-        }
-
-        .partners-grid {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .partners-scroll-track {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            animation: scrollPartners 30s linear infinite;
-        }
-
-        .partners-grid:hover .partners-scroll-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollPartners {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(calc(-100% - 4rem));
-            }
-        }
-
-        .partner-logo {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-            filter: grayscale(100%);
-            flex-shrink: 0;
-        }
-
-        .partner-logo:hover {
-            opacity: 1;
-            filter: grayscale(0%);
-        }
-
-        /* EVENTS SECTION */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .events-grid {
-            position: relative;
-            overflow: hidden;
-            margin-top: 1.5rem;
-            padding-bottom: 4rem;
-        }
-
-        .events-carousel-wrapper {
-            overflow: hidden;
-        }
-
-        .events-carousel-track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .event-card {
-            border: 1px solid var(--color-gray-200);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: box-shadow 0.3s ease;
-            flex-shrink: 0;
-            width: calc(33.333% - 1.35rem);
-            min-width: 300px;
-        }
-
-        .event-card:hover {
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Carousel Navigation */
-        .carousel-nav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0;
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 0.5rem;
-            margin: 0 auto;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #CBD5E1;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: var(--color-primary-dark);
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        .carousel-arrow {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--color-gray-300);
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .carousel-arrow:hover {
-            background: var(--color-primary-dark);
-            border-color: var(--color-primary-dark);
-            color: white;
-        }
-
-        .carousel-arrow:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .carousel-arrow svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .event-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .event-content {
-            padding: 1.5rem;
-        }
-
-        .event-date {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            padding: 0;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--color-gray-600);
-            margin-bottom: 0.75rem;
-        }
-
-        .event-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .event-meta {
-            color: var(--color-gray-500);
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .event-link {
-            font-weight: 600;
-            color: var(--color-primary-dark);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .event-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ABOUT / STATS SECTION */
-        .sc-about {
-            background-color: #0f172a;
-            /* Dark blue/slate */
-            color: white;
-            padding: 5rem 0;
-        }
-
-        .about-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4rem;
-            align-items: flex-start;
-        }
-
-        .about-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-style: italic;
-            font-weight: 700;
-            flex: 1;
-        }
-
-        .about-text {
-            flex: 2;
-            color: #94a3b8;
-            font-size: 1.125rem;
-            max-width: 600px;
-        }
-
-        .about-strong {
-            color: white;
-            font-weight: 600;
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            flex: 1;
-        }
-
-        .stat-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1.5rem;
-            color: white;
-            opacity: 0.9;
-        }
-
-        .stat-number {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
-        }
-
-        .stat-number span {
-            color: var(--color-accent-yellow);
-        }
-
-        .stat-label {
-            color: #94a3b8;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* STORIES SECTION */
-        .stories-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .stories-content h2 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-        }
-
-        .story-block h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-family: var(--font-display);
-        }
-
-        .story-block p {
-            color: var(--color-gray-500);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .stories-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .stories-images img {
-            border-radius: var(--radius-lg);
-            height: 400px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        /* TESTIMONIALS SECTION */
-        .testimonials {
-            background-color: var(--color-gray-50);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .stars {
-            color: var(--color-accent-yellow);
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.125rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--color-gray-200);
-            object-fit: cover;
-        }
-
-        .author-info h4 {
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .author-info span {
-            color: var(--color-accent-yellow);
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-
-        .text-green {
-            color: #10B981;
-        }
-
-        /* RECENT POSTS */
-        .recent-posts {
-            padding: 5rem 0;
-            background: #F9FAFB;
-        }
-
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .post-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            display: flex;
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow 0.3s;
-        }
-
-        .post-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .post-image {
-            width: 200px;
-            object-fit: cover;
-        }
-
-        .post-content {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .post-badge {
-            background: var(--color-accent-yellow);
-            color: var(--color-primary-dark);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 0.125rem 0.5rem;
-            border-radius: 9999px;
-            align-self: flex-start;
-            margin-bottom: 0.5rem;
-        }
-
-        .post-title {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .post-link {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-top: auto;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        /* VIDEOS SECTION */
-        .video-grid {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-            overflow: hidden;
-            padding: 1rem 0;
-        }
-
-        .video-scroll-track {
-            display: flex;
-            gap: 2rem;
-            animation: scrollVideos 40s linear infinite;
-        }
-
-        .video-grid:hover .video-scroll-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollVideos {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(calc(-100% - 2rem));
-            }
-        }
-
-        .video-card {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            position: relative;
-            flex-shrink: 0;
-            width: 350px;
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: var(--radius-lg);
-            display: block;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-lg);
-        }
-
-        .play-btn {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary-dark);
-            transition: transform 0.2s;
-        }
-
-        .video-card:hover .play-btn {
-            transform: scale(1.1);
-        }
-
-        .video-title {
-            margin-top: 1rem;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        /* HOW TO BE PART SECTION */
-        .steps-section {
-            background-color: var(--color-primary-dark);
-            color: white;
-            padding: 5rem 0;
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .steps-image {
-            border-radius: var(--radius-xl) 0 var(--radius-xl) 0;
-            /* Unique shape from design */
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .step-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .step-item {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .step-icon {
-            width: 40px;
-            height: 40px;
-            color: var(--color-accent-yellow);
-            flex-shrink: 0;
-        }
-
-        .step-content h4 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-content p {
-            color: #9CA3AF;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .step-link {
-            color: var(--color-accent-yellow);
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-            display: inline-block;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: white;
-            padding: 5rem 0 2rem;
-            border-top: 1px solid var(--color-gray-100);
-            font-size: 0.9rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-brand p {
-            color: var(--color-gray-500);
-            margin-top: 1rem;
-            max-width: 300px;
-        }
-
-        .footer-col h4 {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            font-family: var(--font-display);
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--color-gray-500);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-primary-dark);
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--color-gray-100);
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            color: var(--color-gray-500);
-            font-size: 0.875rem;
-        }
-
-        @media (max-width: 768px) {
-
-            .posts-grid,
-            .video-grid,
-            .steps-container,
-            .footer-grid,
-            .testimonials-grid,
-            .stories-grid,
-            .stories-images,
-            .about-header {
-                grid-template-columns: 1fr;
-                flex-direction: column;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-header,
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -1812,133 +373,309 @@
 
 
         <!-- Events Section -->
-        <section class="events-section" id="events" style="padding: 5rem 0;">
+        <section class="events-section" id="events">
             <div class="container">
-                <div class="section-header" style="text-align: left; display: block;">
-                    <span class="badge"
-                        style="display: inline-block; background: var(--color-accent-yellow); color: var(--color-primary-dark); padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 600; font-size: 0.875rem; margin-bottom: 1rem;">Events</span>
-                    <h2 class="section-title" style="text-align: left;">Upcoming Events</h2>
-                    <p class="section-subtitle" style="text-align: left;">Join us for inspiring interfaith and
-                        intercultural events.</p>
-                    <a href="#" class="btn btn-outline" style="margin-top: 1.5rem;">View All</a>
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <h2 class="section-title">Events</h2>
+                        <p class="section-subtitle">Join us for inspiring interfaith and intercultural events.</p>
+                    </div>
+                    <div class="section-header-right">
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
                 </div>
 
                 <div class="events-grid">
                     <div class="events-carousel-wrapper">
                         <div class="events-carousel-track" id="eventsCarousel">
-                            <!-- Event 1 (Real) -->
+
+                            <!-- Event Card 1 -->
                             <div class="event-card">
-                                <div class="event-image-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
-                                        alt="Media Education">
-                                    <span class="event-tag">Education</span>
+                                <div class="event-card-header">
+                                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+                                        alt="Cultural Exchange Workshop" class="event-illustration">
+                                    <div class="event-date-badge">
+                                        <div class="event-date-badge-day">Tue</div>
+                                        <div class="event-date-badge-date">06</div>
+                                        <div class="event-date-badge-month">Feb 2024</div>
+                                    </div>
                                 </div>
-                                <div class="event-content">
-                                    <div class="event-date">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                                        </svg>
-                                        Dec 15, 2025
+                                <div class="event-card-body">
+                                    <div class="event-categories">
+                                        <span class="event-category-tag">Workshop</span>
                                     </div>
-                                    <h3 class="event-title">Academy of Media Education</h3>
-                                    <p class="event-description">Critical and Responsible Use of Information. Developing
-                                        critical thinking in the digital age.</p>
-                                    <div class="event-location">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                            <circle cx="12" cy="10" r="3"></circle>
-                                        </svg>
-                                        Warsaw / Online
+                                    <div class="event-meta-row">
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                            Tue 06 Feb 2024
+                                        </div>
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Warsaw
+                                        </div>
                                     </div>
-                                    <a href="#" class="event-link">Details →</a>
+                                    <h3 class="event-title">Cultural Exchange Workshop</h3>
+                                    <p class="event-description">Explore diverse cultures through interactive
+                                        discussions and activities.</p>
+                                    <a href="#" class="event-link">
+                                        View Event
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
 
-                            <!-- Event 2 (Real) -->
+                            <!-- Event Card 2 -->
                             <div class="event-card">
-                                <div class="event-image-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1629904853716-6b0364c1e276?auto=format&fit=crop&w=800&q=80"
-                                        alt="Game Night">
-                                    <span class="event-tag">Social</span>
+                                <div class="event-card-header">
+                                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
+                                        alt="Interfaith Dialogue Seminar" class="event-illustration">
+                                    <div class="event-date-badge">
+                                        <div class="event-date-badge-day">Wed</div>
+                                        <div class="event-date-badge-date">07</div>
+                                        <div class="event-date-badge-month">Feb 2024</div>
+                                    </div>
                                 </div>
-                                <div class="event-content">
-                                    <div class="event-date">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                                        </svg>
-                                        Jan 10, 2026
+                                <div class="event-card-body">
+                                    <div class="event-categories">
+                                        <span class="event-category-tag">Seminar</span>
                                     </div>
-                                    <h3 class="event-title">Hot Chocolate & Game Night</h3>
-                                    <p class="event-description">A cozy gathering filled with games, hot chocolate, and
-                                        great
-                                        conversations to start the New Year.</p>
-                                    <div class="event-location">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                            <circle cx="12" cy="10" r="3"></circle>
-                                        </svg>
-                                        Dunaj Center
+                                    <div class="event-meta-row">
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                            Wed 07 Feb 2024
+                                        </div>
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Krakow
+                                        </div>
                                     </div>
-                                    <a href="#" class="event-link">Details →</a>
+                                    <h3 class="event-title">Interfaith Dialogue Seminar</h3>
+                                    <p class="event-description">Engage in meaningful conversations about faith and
+                                        community.</p>
+                                    <a href="#" class="event-link">
+                                        View Event
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
 
-                            <!-- Event 3 (Real) -->
+                            <!-- Event Card 3 -->
                             <div class="event-card">
-                                <div class="event-image-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80"
-                                        alt="Media Freedom">
-                                    <span class="event-tag">Contest</span>
+                                <div class="event-card-header">
+                                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80"
+                                        alt="Community Voices Panel" class="event-illustration">
+                                    <div class="event-date-badge">
+                                        <div class="event-date-badge-day">Thu</div>
+                                        <div class="event-date-badge-date">08</div>
+                                        <div class="event-date-badge-month">Feb 2024</div>
+                                    </div>
                                 </div>
-                                <div class="event-content">
-                                    <div class="event-date">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                                        </svg>
-                                        Feb 05, 2026
+                                <div class="event-card-body">
+                                    <div class="event-categories">
+                                        <span class="event-category-tag">Panel</span>
                                     </div>
-                                    <h3 class="event-title">Media & Freedom Contest</h3>
-                                    <p class="event-description">Have your say on the role of media in democracy.
-                                        Freedom of
-                                        speech, ethics, and disinformation.</p>
-                                    <div class="event-location">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                            <circle cx="12" cy="10" r="3"></circle>
-                                        </svg>
-                                        National Application
+                                    <div class="event-meta-row">
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                            Thu 08 Feb 2024
+                                        </div>
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Gdansk
+                                        </div>
                                     </div>
-                                    <a href="#" class="event-link">Details →</a>
+                                    <h3 class="event-title">Community Voices Panel</h3>
+                                    <p class="event-description">Hear from diverse leaders on fostering unity and
+                                        understanding.</p>
+                                    <a href="#" class="event-link">
+                                        View Event
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Event Card 1 (Copy) -->
+                            <div class="event-card">
+                                <div class="event-card-header">
+                                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+                                        alt="Cultural Exchange Workshop" class="event-illustration">
+                                    <div class="event-date-badge">
+                                        <div class="event-date-badge-day">Tue</div>
+                                        <div class="event-date-badge-date">06</div>
+                                        <div class="event-date-badge-month">Feb 2024</div>
+                                    </div>
+                                </div>
+                                <div class="event-card-body">
+                                    <div class="event-categories">
+                                        <span class="event-category-tag">Workshop</span>
+                                    </div>
+                                    <div class="event-meta-row">
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                            Tue 06 Feb 2024
+                                        </div>
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Warsaw
+                                        </div>
+                                    </div>
+                                    <h3 class="event-title">Cultural Exchange Workshop</h3>
+                                    <p class="event-description">Explore diverse cultures through interactive
+                                        discussions and activities.</p>
+                                    <a href="#" class="event-link">
+                                        View Event
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Event Card 2 (Copy) -->
+                            <div class="event-card">
+                                <div class="event-card-header">
+                                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
+                                        alt="Interfaith Dialogue Seminar" class="event-illustration">
+                                    <div class="event-date-badge">
+                                        <div class="event-date-badge-day">Wed</div>
+                                        <div class="event-date-badge-date">07</div>
+                                        <div class="event-date-badge-month">Feb 2024</div>
+                                    </div>
+                                </div>
+                                <div class="event-card-body">
+                                    <div class="event-categories">
+                                        <span class="event-category-tag">Seminar</span>
+                                    </div>
+                                    <div class="event-meta-row">
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                            Wed 07 Feb 2024
+                                        </div>
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Krakow
+                                        </div>
+                                    </div>
+                                    <h3 class="event-title">Interfaith Dialogue Seminar</h3>
+                                    <p class="event-description">Engage in meaningful conversations about faith and
+                                        community.</p>
+                                    <a href="#" class="event-link">
+                                        View Event
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Event Card 3 (Copy) -->
+                            <div class="event-card">
+                                <div class="event-card-header">
+                                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80"
+                                        alt="Community Voices Panel" class="event-illustration">
+                                    <div class="event-date-badge">
+                                        <div class="event-date-badge-day">Thu</div>
+                                        <div class="event-date-badge-date">08</div>
+                                        <div class="event-date-badge-month">Feb 2024</div>
+                                    </div>
+                                </div>
+                                <div class="event-card-body">
+                                    <div class="event-categories">
+                                        <span class="event-category-tag">Panel</span>
+                                    </div>
+                                    <div class="event-meta-row">
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                            Thu 08 Feb 2024
+                                        </div>
+                                        <div class="event-meta-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Gdansk
+                                        </div>
+                                    </div>
+                                    <h3 class="event-title">Community Voices Panel</h3>
+                                    <p class="event-description">Hear from diverse leaders on fostering unity and
+                                        understanding.</p>
+                                    <a href="#" class="event-link">
+                                        View Event
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Carousel Navigation -->
-                    <div class="carousel-nav">
+                <div class="carousel-nav">
+                    <div class="carousel-dots" id="eventsDots"></div>
+                    <div class="carousel-arrows">
                         <button class="carousel-arrow" id="eventsPrev" aria-label="Previous">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="15 18 9 12 15 6"></polyline>
                             </svg>
                         </button>
-                        <div class="carousel-dots" id="eventsDots">
-                            <button class="carousel-dot active"></button>
-                        </div>
                         <button class="carousel-arrow" id="eventsNext" aria-label="Next">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -1947,91 +684,120 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
         <!-- About/Stats Section -->
-        <section class="sc-about" style="background: #F9FAFB; padding: 5rem 0;">
+        <!-- About/Stats Section (Premium Dark Redesign) -->
+        <section class="about-premium">
             <div class="container">
-                <div class="about-header">
-                    <h2 class="about-title">About us</h2>
-                    <p class="about-text">
-                        Our work is guided by values of <span class="about-strong">inclusion, respect, and
-                            collaboration</span>. Every project, partnership, and event we undertake is designed to
+                <div class="about-premium-header">
+                    <h2 class="about-premium-title">About us</h2>
+                    <p class="about-premium-text">
+                        Our work is guided by values of <strong>inclusion, respect</strong>, and
+                        <strong>collaboration</strong>. Every project, partnership, and event we undertake is designed
+                        to
                         build dialogue.
                     </p>
                 </div>
 
-                <div class="stats-grid">
+                <div class="stats-premium-grid">
                     <!-- Stat 1 -->
-                    <div class="stat-item">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                    <div class="stat-premium-item">
+                        <svg class="stat-premium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path
                                 d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                             </path>
                         </svg>
-                        <div class="stat-number">10,000<span>+</span></div>
-                        <div class="stat-label">Lives Touched</div>
+                        <div class="stat-premium-number">10,000<span>+</span></div>
+                        <div class="stat-premium-label">Lives Touched</div>
                     </div>
                     <!-- Stat 2 -->
-                    <div class="stat-item">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    <div class="stat-premium-item">
+                        <svg class="stat-premium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Hands helping/holding icon (Handshake replacement) -->
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                         </svg>
-                        <div class="stat-number">100<span>+</span></div>
-                        <div class="stat-label">Collaborations</div>
+                        <div class="stat-premium-number">100<span>+</span></div>
+                        <div class="stat-premium-label">Collaborations</div>
                     </div>
                     <!-- Stat 3 -->
-                    <div class="stat-item">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                    <div class="stat-premium-item">
+                        <svg class="stat-premium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Happy face (Events replacement) -->
                             <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                            </path>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
                         </svg>
-                        <div class="stat-number">75<span>+</span></div>
-                        <div class="stat-label">Events Anually</div>
+                        <div class="stat-premium-number">75<span>+</span></div>
+                        <div class="stat-premium-label">Events Annually</div>
                     </div>
                     <!-- Stat 4 -->
-                    <div class="stat-item">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
-                            </path>
+                    <div class="stat-premium-item">
+                        <svg class="stat-premium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
                         </svg>
-                        <div class="stat-number">15<span>+</span></div>
-                        <div class="stat-label">Years of Impact</div>
+                        <div class="stat-premium-number">15<span>+</span></div>
+                        <div class="stat-premium-label">Years of Impact</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Stories Section -->
-        <section class="section">
-            <div class="container">
-                <div class="stories-grid">
-                    <div class="stories-content">
-                        <h2>Stories of dialogue in action</h2>
-                        <div class="story-block">
-                            <h3>Dialogue for Inclusion</h3>
-                            <p>This event aimed to promote intercultural dialogue and mutual understanding among young
-                                people. Through interactive activities and discussions, participants explored themes of
-                                diversity, respect, and cooperation.</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
+        <!-- Stories Section (Premium Split Redesign) -->
+        <section class="stories-premium">
+            <div class="container stories-premium-grid">
+                <!-- Left Content -->
+                <div class="stories-content-side">
+                    <h2 class="stories-main-title">Stories of dialogue<br>in action</h2>
+
+                    <div class="active-story-info">
+                        <h3 class="active-story-title">Dialogue for Inclusion</h3>
+                        <p class="active-story-text">This event aimed to promote intercultural dialogue and mutual
+                            understanding among young
+                            people. Through interactive activities and discussions, participants explored themes of
+                            diversity, respect, and cooperation.</p>
+
+                        <!-- Partner Logo Placeholder using a clean SVG or Image -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
+                            alt="UNHCR Polska" class="story-partner-logo" style="opacity: 0.6; height: 32px;">
+                        <!-- Using placeholder for now, user can swap -->
+
+                        <a href="#" class="read-more-premium">
+                            Read More
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
                     </div>
-                    <div class="stories-images">
-                        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=600&q=80"
-                            alt="Story 1">
-                        <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=600&q=80"
-                            alt="Story 2">
+                </div>
+
+                <!-- Right Slider -->
+                <div class="stories-slider-wrapper">
+                    <div class="stories-slider-track" id="storiesSlider">
+                        <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80"
+                            alt="Story Image 1" class="story-slide-image">
+                        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800&q=80"
+                            alt="Story Image 2" class="story-slide-image">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
+                            alt="Story Image 3" class="story-slide-image">
+                    </div>
+
+                    <div class="stories-pagination-dots" id="storiesDots">
+                        <button class="story-dot active" data-index="0"></button>
+                        <button class="story-dot" data-index="1"></button>
+                        <button class="story-dot" data-index="2"></button>
                     </div>
                 </div>
             </div>
@@ -2041,35 +807,136 @@
         <section class="section testimonials">
             <div class="container">
                 <h2 class="section-title">How our institute<br>inspire and connect</h2>
+                <p class="section-subtitle" style="margin-bottom: 2rem;">Hear from our partners and participants who
+                    have experienced the
+                    transformative power of dialogue.</p>
+
                 <div class="testimonials-grid">
                     <!-- Testimonial 1 -->
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="testimonial-text">"Over the years, the Dialogue Institute has been a cornerstone in
-                            our efforts to promote inclusivity and mutual respect. Their dedication to dialogue has made
-                            a tangible impact on our projects and partnerships."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80"
-                                alt="User" class="author-avatar">
-                            <div class="author-info">
-                                <h4>Name Surname</h4>
-                                <span class="text-green">Position, Company name</span>
+                        <div class="stars">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Over the years, the Dialogue Institute has been a
+                            cornerstone in our efforts to promote inclusivity and
+                            mutual respect. Their dedication to dialogue has made a
+                            tangible impact on our projects and partnerships."</p>
+
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-wrapper">
+                                <div class="author-avatar"
+                                    style="background-color: #E5E7EB; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Name Surname</h4>
+                                    <span>Position, Company name</span>
+                                </div>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
+                                alt="Partner Logo" class="partner-logo-testimonial"
+                                style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);">
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Over the years, the Dialogue Institute has been a
+                            cornerstone in our efforts to promote inclusivity and
+                            mutual respect. Their dedication to dialogue has made a
+                            tangible impact on our projects and partnerships."</p>
+
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-wrapper">
+                                <div class="author-avatar"
+                                    style="background-color: #E5E7EB; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Name Surname</h4>
+                                    <span>Position, Company name</span>
+                                </div>
+                            </div>
+                            <!-- Mocking the blue circular logo from image -->
+                            <div style="display: flex; gap: 4px; align-items: center;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
+                                    alt="Partner Logo" class="partner-logo-testimonial"
+                                    style="filter: brightness(0) saturate(100%) invert(56%) sepia(68%) saturate(309%) hue-rotate(162deg) brightness(87%) contrast(84%);">
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="testimonial-text">"Over the years, the Dialogue Institute has been a cornerstone in
-                            our efforts to promote inclusivity and mutual respect. Their dedication to dialogue has made
-                            a tangible impact on our projects and partnerships."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80"
-                                alt="User" class="author-avatar">
-                            <div class="author-info">
-                                <h4>Name Surname</h4>
-                                <span class="text-green">Position, Company name</span>
-                            </div>
+                </div>
+
+                <div class="testimonial-controls">
+                    <div class="testimonial-dots">
+                        <div class="t-dot active"></div>
+                        <div class="t-dot"></div>
+                        <div class="t-dot"></div>
+                        <div class="t-dot"></div>
+                    </div>
+                    <div class="testimonial-arrows">
+                        <div class="t-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                        </div>
+                        <div class="t-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -2078,228 +945,289 @@
 
 
         <!-- Recent Posts -->
-        <section class="section recent-posts" style="padding: 5rem 0;">
+        <section class="section recent-posts">
             <div class="container">
-                <div class="section-header" style="text-align: left; display: block;">
-                    <span class="badge"
-                        style="display: inline-block; background: var(--color-accent-yellow); color: var(--color-primary-dark); padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 600; font-size: 0.875rem; margin-bottom: 1rem;">Latest
-                        Publications</span>
-                    <h2 class="section-title" style="text-align: left;">Recent posts</h2>
-                    <p style="color: var(--color-gray-500); margin-top: 0.5rem; text-align: left;">Explore our latest
-                        articles on
-                        interfaith dialogue and cultural exchange.</p>
-                    <a href="#" class="btn btn-outline" style="margin-top: 1.5rem;">View all</a>
+                <div class="section-header section-header-row"
+                    style="text-align: left; display: flex; margin-bottom: 4rem;">
+                    <div style="max-width: 600px;">
+                        <span class="blog-badge" style="margin-bottom: 1rem; display: inline-block;">Blog</span>
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Recent posts</h2>
+                        <p style="color: var(--color-gray-500); font-size: 1.125rem;">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit.</p>
+                    </div>
+                    <a href="#" class="read-time" style="font-size: 1rem; text-decoration: none;">View all</a>
                 </div>
 
                 <div class="posts-grid">
                     <!-- Post 1 -->
-                    <div class="post-card">
+                    <a href="#" class="post-card">
                         <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400&q=80"
                             alt="Post" class="post-image">
                         <div class="post-content">
-                            <span class="post-badge">Category</span>
-                            <span class="text-xs text-gray-500 mb-2 block">5 min read</span>
+                            <div class="post-meta-row">
+                                <span class="blog-badge">Category</span>
+                                <span class="read-time">5 min read</span>
+                            </div>
                             <h3 class="post-title">Blog title heading will go here</h3>
-                            <p style="color: #6B7280; font-size: 0.9rem; margin-bottom: 1rem;">Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Suspendisse varius enim...</p>
-                            <a href="#" class="post-link">Read more &rarr;</a>
+                            <p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                varius enim...</p>
+                            <span class="post-link">
+                                Read more
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Post 2 -->
-                    <div class="post-card">
+                    <a href="#" class="post-card">
                         <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=400&q=80"
                             alt="Post" class="post-image">
                         <div class="post-content">
-                            <span class="post-badge">Category</span>
-                            <span class="text-xs text-gray-500 mb-2 block">5 min read</span>
+                            <div class="post-meta-row">
+                                <span class="blog-badge">Category</span>
+                                <span class="read-time">5 min read</span>
+                            </div>
                             <h3 class="post-title">Blog title heading will go here</h3>
-                            <p style="color: #6B7280; font-size: 0.9rem; margin-bottom: 1rem;">Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Suspendisse varius enim...</p>
-                            <a href="#" class="post-link">Read more &rarr;</a>
+                            <p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                varius enim...</p>
+                            <span class="post-link">
+                                Read more
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Post 3 -->
-                    <div class="post-card">
+                    <a href="#" class="post-card">
                         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80"
                             alt="Post" class="post-image">
                         <div class="post-content">
-                            <span class="post-badge">Category</span>
-                            <span class="text-xs text-gray-500 mb-2 block">5 min read</span>
+                            <div class="post-meta-row">
+                                <span class="blog-badge">Category</span>
+                                <span class="read-time">5 min read</span>
+                            </div>
                             <h3 class="post-title">Blog title heading will go here</h3>
-                            <p style="color: #6B7280; font-size: 0.9rem; margin-bottom: 1rem;">Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Suspendisse varius enim...</p>
-                            <a href="#" class="post-link">Read more &rarr;</a>
+                            <p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                varius enim...</p>
+                            <span class="post-link">
+                                Read more
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Post 4 -->
-                    <div class="post-card">
+                    <a href="#" class="post-card">
                         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80"
                             alt="Post" class="post-image">
                         <div class="post-content">
-                            <span class="post-badge">Category</span>
-                            <span class="text-xs text-gray-500 mb-2 block">5 min read</span>
+                            <div class="post-meta-row">
+                                <span class="blog-badge">Category</span>
+                                <span class="read-time">5 min read</span>
+                            </div>
                             <h3 class="post-title">Blog title heading will go here</h3>
-                            <p style="color: #6B7280; font-size: 0.9rem; margin-bottom: 1rem;">Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Suspendisse varius enim...</p>
-                            <a href="#" class="post-link">Read more &rarr;</a>
+                            <p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                varius enim...</p>
+                            <span class="post-link">
+                                Read more
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- Videos Section -->
-        <section class="section" style="background: #F9FAFB; padding: 5rem 0;">
+        <section class="section" style="background: #fff; padding: 5rem 0;">
             <div class="container">
                 <div class="section-header" style="text-align: left; display: block;">
-                    <span class="badge"
-                        style="display: inline-block; background: var(--color-accent-yellow); color: var(--color-primary-dark); padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 600; font-size: 0.875rem; margin-bottom: 1rem;">Multimedia</span>
-                    <h2 class="section-title" style="text-align: left;">Discover more Videos</h2>
-                    <a href="#" class="btn btn-outline" style="margin-top: 1.5rem;">View All</a>
+                    <span class="badge-outline-yellow">Discover more</span>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 0.5rem;">Videos</h2>
+                    <p
+                        style="color: #6B7280; margin-top: 1rem; max-width: 700px; margin-bottom: 2rem; text-align: left; font-size: 1.125rem;">
+                        Explore more videos from our work in cultural dialogue, education, and peacebuilding. These
+                        selected clips offer insights into our mission and values.
+                    </p>
                 </div>
-                <p style="color: #6B7280; margin-top: 1rem; max-width: 700px; margin-bottom: 2rem; text-align: left;">
-                    Explore more videos
-                    from our work in cultural dialogue, education, and peacebuilding. These selected clips offer
-                    insights into our mission and values.</p>
 
                 <div class="video-grid">
                     <div class="video-scroll-track">
                         <!-- Video 1 -->
                         <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1492619882468-f9b728723381?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">45
-                                    minutes</span>
-                                <div class="play-btn">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://images.unsplash.com/photo-1492619882468-f9b728723381?auto=format&fit=crop&w=800&q=80"
+                                    alt="Exploring Peacebuilding" class="video-thumbnail">
+                                <div class="video-overlay"></div>
+                                <div class="video-play-centered">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h4 class="video-title">Exploring Peacebuilding</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Join us for a deep dive into peacebuilding
-                                strategies.</p>
+                            <div class="video-content">
+                                <div class="video-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    45 minutes
+                                </div>
+                                <h4 class="video-title">Exploring Peacebuilding</h4>
+                                <p class="video-description">Join us for a deep dive into peacebuilding strategies.</p>
+                            </div>
                         </div>
+
                         <!-- Video 2 -->
                         <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">30
-                                    minutes</span>
-                                <div class="play-btn">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80"
+                                    alt="Cultural Exchange" class="video-thumbnail">
+                                <div class="video-overlay"></div>
+                                <div class="video-play-centered">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h4 class="video-title">Cultural Exchange</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Celebrating diversity through dialogue.</p>
+                            <div class="video-content">
+                                <div class="video-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    45 minutes
+                                </div>
+                                <h4 class="video-title">Cultural Exchange</h4>
+                                <p class="video-description">Celebrating diversity through dialogue.</p>
+                            </div>
                         </div>
+
                         <!-- Video 3 -->
                         <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">25
-                                    minutes</span>
-                                <div class="play-btn">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+                                    alt="Interfaith Dialogue" class="video-thumbnail">
+                                <div class="video-overlay"></div>
+                                <div class="video-play-centered">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h4 class="video-title">Interfaith Dialogue</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Building bridges across faiths.</p>
+                            <div class="video-content">
+                                <div class="video-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    45 minutes
+                                </div>
+                                <h4 class="video-title">Interfaith Dialogue</h4>
+                                <p class="video-description">Building bridges across faiths.</p>
+                            </div>
                         </div>
-                        <!-- Video 4 -->
+
+                        <!-- Duplicate set for loop -->
+                        <!-- Video 1 Dup -->
                         <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">40
-                                    minutes</span>
-                                <div class="play-btn">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://images.unsplash.com/photo-1492619882468-f9b728723381?auto=format&fit=crop&w=800&q=80"
+                                    alt="Exploring Peacebuilding" class="video-thumbnail">
+                                <div class="video-overlay"></div>
+                                <div class="video-play-centered">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h4 class="video-title">Community Building</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Strengthening local communities.</p>
+                            <div class="video-content">
+                                <div class="video-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    45 minutes
+                                </div>
+                                <h4 class="video-title">Exploring Peacebuilding</h4>
+                                <p class="video-description">Join us for a deep dive into peacebuilding strategies.</p>
+                            </div>
                         </div>
-                        <!-- Duplicated for seamless loop -->
+
+                        <!-- Video 2 Dup -->
                         <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1492619882468-f9b728723381?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">45
-                                    minutes</span>
-                                <div class="play-btn">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80"
+                                    alt="Cultural Exchange" class="video-thumbnail">
+                                <div class="video-overlay"></div>
+                                <div class="video-play-centered">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h4 class="video-title">Exploring Peacebuilding</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Join us for a deep dive into peacebuilding
-                                strategies.</p>
+                            <div class="video-content">
+                                <div class="video-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    45 minutes
+                                </div>
+                                <h4 class="video-title">Cultural Exchange</h4>
+                                <p class="video-description">Celebrating diversity through dialogue.</p>
+                            </div>
                         </div>
+
+                        <!-- Video 3 Dup -->
                         <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">30
-                                    minutes</span>
-                                <div class="play-btn">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+                                    alt="Interfaith Dialogue" class="video-thumbnail">
+                                <div class="video-overlay"></div>
+                                <div class="video-play-centered">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h4 class="video-title">Cultural Exchange</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Celebrating diversity through dialogue.</p>
-                        </div>
-                        <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">25
-                                    minutes</span>
-                                <div class="play-btn">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M8 5v14l11-7z" />
+                            <div class="video-content">
+                                <div class="video-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
                                     </svg>
+                                    45 minutes
                                 </div>
+                                <h4 class="video-title">Interfaith Dialogue</h4>
+                                <p class="video-description">Building bridges across faiths.</p>
                             </div>
-                            <h4 class="video-title">Interfaith Dialogue</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Building bridges across faiths.</p>
                         </div>
-                        <div class="video-card">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
-                                alt="Video" class="video-thumbnail">
-                            <div class="video-overlay">
-                                <span
-                                    style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">40
-                                    minutes</span>
-                                <div class="play-btn">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M8 5v14l11-7z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <h4 class="video-title">Community Building</h4>
-                            <p style="font-size: 0.875rem; color: #6B7280;">Strengthening local communities.</p>
-                        </div>
+
                     </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="read-time" style="font-size: 1rem; text-decoration: none;">View All</a>
                 </div>
             </div>
         </section>
@@ -2464,6 +1392,7 @@
             let currentSlide = 0;
 
             // Create pagination dots
+            dotsContainer.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
                 dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -2495,20 +1424,58 @@
             prevBtn.addEventListener('click', () => {
                 if (currentSlide > 0) {
                     currentSlide--;
-                    updateCarousel();
+                } else {
+                    currentSlide = totalSlides - 1;
                 }
+                updateCarousel();
             });
 
             nextBtn.addEventListener('click', () => {
                 if (currentSlide < totalSlides - 1) {
                     currentSlide++;
-                    updateCarousel();
+                } else {
+                    currentSlide = 0;
                 }
+                updateCarousel();
             });
 
             // Initialize
             updateCarousel();
         })();
+        // Stories Slider Logic
+        (function () {
+            const track = document.getElementById('storiesSlider');
+            const dots = document.querySelectorAll('.story-dot');
+            if (!track || !dots.length) return;
+
+            let currentStorySlide = 0;
+            const totalStorySlides = dots.length;
+
+            function updateStorySlider(index) {
+                // Determine direction (vertical or horizontal based on CSS)
+                // Assuming horizontal transform for simplicity as per CSS
+                const offset = index * 100;
+                track.style.transform = `translateX(-${offset}%)`;
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                currentStorySlide = index;
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    updateStorySlider(index);
+                });
+            });
+
+            // Auto-advance every 5 seconds
+            setInterval(() => {
+                const nextIndex = (currentStorySlide + 1) % totalStorySlides;
+                updateStorySlider(nextIndex);
+            }, 5000);
+        })();
+
     </script>
 
 </body>
