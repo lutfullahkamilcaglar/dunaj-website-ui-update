@@ -1344,80 +1344,112 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid" style="grid-template-columns: repeat(5, 1fr); gap: 2rem;">
-                <div class="footer-col" style="grid-column: span 1;">
-                    <a href="#" class="logo">
-                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="40" height="40" rx="8" fill="#111827" />
-                            <path d="M20 10L30 30H10L20 10Z" fill="#FFDB1E" />
-                        </svg>
-                        <span style="font-size: 1.25rem;">DialogInstytut</span>
+            <div class="footer-main-grid">
+                <!-- Column 1: Logo + Newsletter -->
+                <div class="footer-brand-col">
+                    <a href="#" class="footer-logo">
+                        <img src="dunaj-logo-footer.png" alt="Dunaj Instytut Dialogu">
                     </a>
-                    <p style="margin-top: 1rem; color: #6B7280; font-size: 0.9rem;">Building bridges between communities
-                        through dialogue, education, and cultural exchange.</p>
+                    <div class="footer-newsletter">
+                        <p>Subscribe our newsletter for updates, news and events.</p>
+                        <div class="newsletter-input-group">
+                            <input type="email" placeholder="E-mail" class="newsletter-input">
+                            <button class="newsletter-btn">
+                                Subscribe
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <label class="footer-checkbox">
+                            <input type="checkbox">
+                            <span>I agree with the privacy & cookie policy</span>
+                        </label>
+                    </div>
                 </div>
 
-                <div class="footer-col">
+                <!-- Column 2: Column One -->
+                <div class="footer-nav-col">
                     <h4>Column One</h4>
                     <nav class="footer-links">
                         <a href="#">Home</a>
+                        <a href="#">Get Involved</a>
+                        <a href="#">Donate</a>
+                        <a href="#">Our Principles</a>
                         <a href="#">About</a>
-                        <a href="#">Events</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contact</a>
                     </nav>
                 </div>
 
-                <div class="footer-col">
+                <!-- Column 3: Column Two -->
+                <div class="footer-nav-col">
                     <h4>Column Two</h4>
                     <nav class="footer-links">
-                        <a href="#">Team</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Partners</a>
-                        <a href="#">Press</a>
-                    </nav>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Follow Us</h4>
-                    <nav class="footer-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">X</a>
-                        <a href="#">Youtube</a>
-                    </nav>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Get Involved</h4>
-                    <p style="font-size: 0.9rem; color: #6B7280; margin-bottom: 1rem;">Subscribe our newsletter for
-                        updates, news and events.</p>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <input type="email" placeholder="E-mail"
-                            style="width: 100%; padding: 0.5rem; border: 1px solid #E5E7EB; border-radius: 4px;">
-                        <button
-                            style="background: var(--color-primary-dark); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Subscribe</button>
-                    </div>
-                    <!-- Links for Donate, Get Involved etc if needed, or just list:-->
-                    <nav class="footer-links">
-                        <a href="#">Donate</a>
+                        <a href="#">Contact</a>
                         <a href="#">Link Seven</a>
                         <a href="#">Link Eight</a>
                         <a href="#">Link Nine</a>
                         <a href="#">Link Ten</a>
                     </nav>
                 </div>
+
+                <!-- Column 4: Follow Us -->
+                <div class="footer-social-col">
+                    <h4>Follow Us</h4>
+                    <div class="footer-social-links">
+                        <a href="#" class="social-icon-link">
+                            <div class="social-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                    </path>
+                                </svg>
+                            </div>
+                            Facebook
+                        </a>
+                        <a href="#" class="social-icon-link">
+                            <div class="social-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </div>
+                            Instagram
+                        </a>
+                        <a href="#" class="social-icon-link">
+                            <div class="social-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                    </path>
+                                </svg>
+                            </div>
+                            X
+                        </a>
+                        <a href="#" class="social-icon-link">
+                            <div class="social-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                                    </path>
+                                </svg>
+                            </div>
+                            Youtube
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-bottom">
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom-bar">
                 <p>&copy; 2025 Dunaj Institute of Dialogue</p>
-                <div style="display: flex; gap: 2rem;">
+                <div class="footer-legal-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                     <a href="#">Cookies Settings</a>
                 </div>
-            </div>
-            <div style="margin-top: 1rem; font-size: 0.8rem; color: #9CA3AF;">
-                I agree with the privacy & cookie policy
             </div>
         </div>
     </footer>
