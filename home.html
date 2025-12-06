@@ -285,44 +285,103 @@
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            letter-spacing: -0.02em;
         }
 
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
+        .nav-links li {
+            position: relative;
+        }
+
         .nav-link {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--color-primary-dark);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.2s ease;
             position: relative;
             padding: 0.5rem 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
         }
 
         .nav-link:hover {
             color: #000;
         }
 
-        /* Underline effect for nav links */
-        .nav-link::after {
+        /* Dropdown arrow - small and elegant */
+        .dropdown-arrow {
+            width: 12px;
+            height: 12px;
+            stroke-width: 2.5;
+            transition: transform 0.3s ease, color 0.2s ease;
+            color: var(--color-accent-yellow);
+        }
+
+        .nav-links li:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Premium dropdown menu */
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+            min-width: 240px;
+            padding: 0.75rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+
+        .nav-links li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #374151;
+            font-size: 0.925rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: #F9FAFB;
+            color: var(--color-primary-dark);
+            border-left-color: var(--color-accent-yellow);
+        }
+
+        /* Underline effect for regular nav links */
+        .nav-links li:not(:has(.dropdown-menu)) .nav-link::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--color-accent-yellow);
+            background: var(--color-accent-yellow);
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after {
+        .nav-links li:not(:has(.dropdown-menu)) .nav-link:hover::after {
             width: 100%;
         }
 
@@ -1456,20 +1515,44 @@
     <header class="header">
         <div class="container header-content">
             <a href="#" class="logo">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Placeholder Logo Icon -->
-                    <rect width="40" height="40" rx="8" fill="#111827" />
-                    <path d="M20 10L30 30H10L20 10Z" fill="#FFDB1E" />
-                </svg>
-                DialogInstytut
+                <img src="dunaj-logo.png" alt="Dunaj Instytut Dialogu" style="height: 45px; width: auto;">
             </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#" class="nav-link">About Us</a></li>
-                    <li><a href="#" class="nav-link">Platforms</a></li>
+                    <li>
+                        <a href="#" class="nav-link">
+                            Platforms
+                            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#">Dialogue Platform</a>
+                            <a href="#">Education Platform</a>
+                            <a href="#">Research Platform</a>
+                            <a href="#">Community Engagement</a>
+                        </div>
+                    </li>
                     <li><a href="#" class="nav-link">Events</a></li>
                     <li><a href="#" class="nav-link">Projects</a></li>
-                    <li><a href="#" class="nav-link">Publications</a></li>
+                    <li>
+                        <a href="#" class="nav-link">
+                            Publications
+                            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#">Research Papers</a>
+                            <a href="#">Blog Articles</a>
+                            <a href="#">Annual Reports</a>
+                            <a href="#">Case Studies</a>
+                            <a href="#">Media Kit</a>
+                        </div>
+                    </li>
                     <li><a href="#" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
